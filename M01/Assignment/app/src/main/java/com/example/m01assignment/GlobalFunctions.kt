@@ -1,5 +1,8 @@
 package com.example.m01assignment
 
+import com.example.m01assignment.viewmodel.Mortgage
+import kotlin.math.pow
+
 /*
 *
 * To calculate an amortized mortgage payment, you'll need to collect the following information in your UI:
@@ -31,8 +34,13 @@ Polish the UI. Consider using TextInputLayout for any EditText fields.
 * downpayment, interest rate, loan length, purchase price
 *
 * */
-fun doAmorFromInputs(dp:Double,ir:Double,ll:Int,pp:Double):Double {
-return dp+ir+ll+pp
+fun doAmorFromInputs(mortgage: Mortgage):Double {
+        val t =mortgage.loanLength*12.00
+        val pr =mortgage.principalAmount -mortgage.downpayment
+        val r = mortgage.interestRate
+
+    val A = (pr*(1+r).pow(t))  / ((1+r).pow(t-1))
+return A
 
 
 }

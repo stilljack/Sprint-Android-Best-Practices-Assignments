@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.example.m01assignment.MainActivity
 import com.example.m01assignment.R
 import com.example.m01assignment.doAmorFromInputs
+import com.example.m01assignment.viewmodel.Mortgage
 import com.jakewharton.rxbinding3.widget.textChanges
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -21,6 +22,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
+    val mortage = Mortgage(1.0,1.0,1,1.0)
     lateinit var callback: OnWhateverListener
     val compositeDisposable = CompositeDisposable()
     fun setOnWhateverListener(callback: OnWhateverListener) {
@@ -67,8 +69,11 @@ class MainFragment : Fragment() {
             etLoanLengthValueObs,
             etPurchasePriceValueObs)
     { dp: CharSequence, ir: CharSequence, ll: CharSequence, pp: CharSequence ->
-
-        "${doAmorFromInputs(dp.toString().toDouble(),ir.toString().toDouble(),ll.toString().toInt(),pp.toString().toDouble())}"
+       mortage.downpayment= dp.toString().toDouble()
+        mortage.interestRate= ir.toString().toDouble()
+        mortage.loanLength=ll.toString().toInt()
+       mortage.principalAmount= pp.toString().toDouble()
+        "${doAmorFromInputs(mortage)}"
     }
         val disposable = combinedInput.subscribe{
             tv_display_result.text = it
