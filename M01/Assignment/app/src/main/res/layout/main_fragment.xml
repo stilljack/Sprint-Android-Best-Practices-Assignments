@@ -13,6 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="0.00"
+        app:layout_constraintBottom_toTopOf="@id/tv_purchase"
+        app:layout_constraintStart_toStartOf="@+id/tv_purchase"
         tools:layout_editor_absoluteX="84dp"
         tools:layout_editor_absoluteY="46dp" />
 
@@ -26,23 +28,27 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_purchase_price" />
 
+
     <EditText
         android:id="@+id/et_down_payment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="0.00"
-        tools:layout_editor_absoluteX="276dp"
-        tools:layout_editor_absoluteY="46dp" />
+        app:layout_constraintEnd_toStartOf="@+id/et_purchase_price"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="@+id/tv_down_payment"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_down_payment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="97dp"
+        android:layout_height="56dp"
         android:text="Down Payment"
-        app:layout_constraintLeft_toRightOf="@id/tv_purchase"
-        app:layout_constraintTop_toBottomOf="@id/et_down_payment" />
+
+
+        app:layout_constraintBottom_toTopOf="@+id/et_interest_rate"
+        app:layout_constraintStart_toStartOf="@+id/et_interest_rate"
+        app:layout_constraintTop_toBottomOf="@+id/et_down_payment" />
 
 
     <EditText
@@ -57,12 +63,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_loan_length"
+        android:id="@+id/tv_interest_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Loan length"
         tools:layout_editor_absoluteX="265dp"
         tools:layout_editor_absoluteY="457dp"
+        app:layout_constraintEnd_toEndOf="@id/et_interest_rate"
         app:layout_constraintTop_toBottomOf="@id/et_loan_length"/>
 
     <EditText
@@ -81,8 +88,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Loan length"
-
+        app:layout_constraintEnd_toEndOf="@id/et_loan_length"
         app:layout_constraintTop_toBottomOf="@id/et_interest_rate"
         tools:layout_editor_absoluteX="60dp" />
 
+
+    <TextView
+        android:id="@+id/tv_display_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loan length"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,7 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         val something = activity
-        message.setOnClickListener { callback.doAthing() }
+        tv_display_result.setOnClickListener { callback.doAthing() }
     }
 
 }
