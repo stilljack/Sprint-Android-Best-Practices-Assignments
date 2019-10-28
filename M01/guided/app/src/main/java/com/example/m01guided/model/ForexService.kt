@@ -5,6 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ForexService {
-    @GET("{currency")
+    @GET("{currency}")
     fun getRates(@Path("currency") currency:String): Single<Rates>
 }

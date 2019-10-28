@@ -2,6 +2,7 @@ package com.example.m01guided.ui.main
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -73,11 +74,39 @@ class MainFragment : Fragment() {
         }
         var atomic = AtomicBoolean(false)
 
-        btn_main.setOnClickListener {
 
-            if (atomic.get() !=true) {
+        val retrofy = Retrofit.Builder().baseUrl("https://api.exchangerate-api.com/v4/latest/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+
+        val service = retrofy.create(ForexService::class.java)
+
+    /*    val newDisposable = service.getRates("USD").subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .retry(3)
+            .subscribe( { rates:Rates ->
+                tv_main.text = rates.rates.toString()
+            },
+                {e-> Log.i(e.toString(),"erro") }
+            )*/
+
+
+        btn_main.setOnClickListener {
+            val newDisposable = service.getRates("USD").subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .retry(3)
+                .subscribeBy(  // named arguments for lambda Subscribers
+                    onSuccess = { rates:Rates ->
+                        tv_main.text = rates.rates.get("EURO").toString()
+                    Log.i("success",rates.toString())},
+                    onError =  { it.printStackTrace() }
+                )
+
+            compositeDisposable.add(newDisposable)
+           /* if (atomic.get() !=true) {
                 atomic.set(true)
-            val disposable =
+                val disposable =
                     object1.subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(  // named arguments for lambda Subscribers
@@ -94,26 +123,9 @@ class MainFragment : Fragment() {
                         )
 
 
-            compositeDisposable.add(disposable)
-                }
+                compositeDisposable.add(disposable)
+            }*/
         }
-        val retrofy = Retrofit.Builder().baseUrl("https://api.exchangerate-api.com/v4/latest")
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-
-        val service = retrofy.create(ForexService::class.java)
-
-        val newDisposable = service.getRates("USD").subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .retry(3)
-            .subscribe(
-                {t1: Rates?, t2: Throwable? ->
-                    et_one.setText(t1?.rates.toString())
-                }
-
-            )
-
 
                 val etonefield = et_one.textChanges()
         val ettwofield = et_two.textChanges()
