@@ -2,6 +2,7 @@ package com.example.m01guided.ui.main
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -93,13 +94,13 @@ class MainFragment : Fragment() {
 
 
         btn_main.setOnClickListener {
-            val newDisposable = service.getRates("USD").subscribeOn(Schedulers.io())
+            val newDisposable = service.getRates(et_one.text.toString()).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .retry(3)
                 .subscribeBy(  // named arguments for lambda Subscribers
                     onSuccess = { rates:Rates ->
-                        tv_main.text = rates.rates.get("EURO").toString()
-                    Log.i("success",rates.toString())},
+                        tv_main.text = rates.rates.get("EUR").toString()
+                        Log.i("success",rates.toString())},
                     onError =  { it.printStackTrace() }
                 )
 
@@ -129,6 +130,18 @@ class MainFragment : Fragment() {
 
                 val etonefield = et_one.textChanges()
         val ettwofield = et_two.textChanges()
+   val etdisp = etonefield.subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+    .retry(3)
+    .subscribeBy(  // named arguments for lambda Subscribers
+        onComplete = {Log.i(SystemClock.currentThreadTimeMillis().toString(),"now")},
+        onError =  { throwable ->  throwable.printStackTrace() }
+    )
+        compositeDisposable.add(etdisp)
+
+
+
+
        /* val obsFieldsCombined = Observable.combineLatest(etonefield,ettwofield) {first,last ->
             "$first $last"
         }
