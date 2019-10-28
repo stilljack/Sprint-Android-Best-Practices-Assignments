@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="0.00"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@id/tv_purchase"
         app:layout_constraintStart_toStartOf="@+id/tv_purchase"
         tools:layout_editor_absoluteX="84dp"
@@ -34,10 +35,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="0.00"
-        app:layout_constraintEnd_toStartOf="@+id/et_purchase_price"
-        app:layout_constraintHorizontal_bias="0.176"
+        android:inputType="numberDecimal"
+      app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_down_payment"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/tv_down_payment" />
 
     <TextView
         android:id="@+id/tv_down_payment"
@@ -57,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
         android:hint="Loan length"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +68,7 @@
         android:id="@+id/tv_interest_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loan length"
+        android:text="Interest Rate in percentage"
         tools:layout_editor_absoluteX="265dp"
         tools:layout_editor_absoluteY="457dp"
         app:layout_constraintEnd_toEndOf="@id/et_interest_rate"
@@ -78,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
         android:hint="interest rate"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +90,7 @@
         android:id="@+id/tv_loan_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loan length"
+        android:text="Loan length in years"
         app:layout_constraintEnd_toEndOf="@id/et_loan_length"
         app:layout_constraintTop_toBottomOf="@id/et_interest_rate"
         tools:layout_editor_absoluteX="60dp" />
