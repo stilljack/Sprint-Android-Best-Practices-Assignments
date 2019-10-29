@@ -60,7 +60,7 @@ class MainFragment : Fragment() {
 
     val etDownPaymentValueObs = et_down_payment.textChanges().filter { it.length > 1 }
     val etInterestRateValueObs = et_interest_rate.textChanges().filter { it.length > 1 }
-    val etLoanLengthValueObs = et_loan_length.textChanges().filter { it.length > 1 }
+    val etLoanLengthValueObs = et_loan_length.textChanges().filter { it.isNotEmpty() }
     val etPurchasePriceValueObs = et_purchase_price.textChanges().filter { it.length > 1 }
     val combinedInput: Observable<CharSequence> = Observables.combineLatest<CharSequence, CharSequence,
             CharSequence, CharSequence, CharSequence

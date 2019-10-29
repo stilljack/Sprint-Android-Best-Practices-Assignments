@@ -2,6 +2,7 @@ package com.example.m01assignment
 
 import com.example.m01assignment.viewmodel.Mortgage
 import kotlin.math.pow
+import kotlin.math.roundToInt
 
 /*
 *
@@ -35,12 +36,16 @@ Polish the UI. Consider using TextInputLayout for any EditText fields.
 *
 * */
 fun doAmorFromInputs(mortgage: Mortgage):Double {
+
         val t =mortgage.loanLength*12.00
         val pr =mortgage.principalAmount -mortgage.downpayment
         val r = mortgage.interestRate
 
-    val A = (pr*(1+r).pow(t))  / ((1+r).pow(t-1))
-return A
+        val top = pr*(1+r).pow(t)
+        val bottom = (1+r).pow(t-1)
+    val answer =  top.div(bottom)
+
+return  answer
 
 
 }
