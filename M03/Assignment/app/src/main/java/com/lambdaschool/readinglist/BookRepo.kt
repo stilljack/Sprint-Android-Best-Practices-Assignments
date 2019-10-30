@@ -13,7 +13,7 @@ object BookRepo {
         }
 
     fun getBook(id: Int): Book {
-        return Book(SharedPrefsDao.getBookCsv(Integer.toString(id))!!)
+        return Book(SharedPrefsDao.getBookCsv(id.toString())!!)
     }
 
     fun nextId(): Int {
