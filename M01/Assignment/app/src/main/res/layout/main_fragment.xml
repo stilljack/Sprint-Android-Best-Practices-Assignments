@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainFragment">
+
+
+    <EditText
+        android:id="@+id/et_purchase_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:hint="0.00"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/tv_purchase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.802"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.437" />
+
+
+    <TextView
+        android:id="@+id/tv_purchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:text="Purchase Price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_down_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="20dp"
+        android:hint="0.00"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/tv_down_payment"
+        app:layout_constraintEnd_toStartOf="@+id/et_purchase_price"
+        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.512" />
+
+    <TextView
+        android:id="@+id/tv_down_payment"
+        android:layout_width="97dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="132dp"
+
+
+        android:text="Down Payment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_purchase"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.182" />
+
+    <EditText
+        android:id="@+id/et_loan_length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Loan length"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/tv_loan_length"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_down_payment"
+        app:layout_constraintTop_toBottomOf="@+id/tv_purchase" />
+
+    <TextView
+        android:id="@+id/tv_interest_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interest Rate in percentage"
+        app:layout_constraintBottom_toTopOf="@+id/tv_display_result"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <EditText
+        android:id="@+id/et_interest_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:hint="interest rate"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/tv_interest_rate"
+        app:layout_constraintEnd_toStartOf="@+id/et_loan_length"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_down_payment" />
+
+    <TextView
+        android:id="@+id/tv_loan_length"
+        android:layout_width="131dp"
+        android:layout_height="15dp"
+        android:text="Loan length in years"
+        app:layout_constraintBottom_toTopOf="@+id/tv_display_result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_interest_rate" />
+
+    <TextView
+        android:id="@+id/tv_display_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loan length"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
