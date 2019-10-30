@@ -1,0 +1,10 @@
+#Mon Oct 28 17:21:59 PDT 2019
+path.2=classes2.dex
+path.1=classes.dex
+path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+base.2=C\:\\Users\\still\\Documents\\androidProjects\\Sprint-Android-Best-Practices-Assignments\\M01\\Assignment\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.1=C\:\\Users\\still\\Documents\\androidProjects\\Sprint-Android-Best-Practices-Assignments\\M01\\Assignment\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
+base.0=C\:\\Users\\still\\Documents\\androidProjects\\Sprint-Android-Best-Practices-Assignments\\M01\\Assignment\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex

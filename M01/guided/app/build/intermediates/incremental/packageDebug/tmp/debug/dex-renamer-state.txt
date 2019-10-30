@@ -1,0 +1,4 @@
+#Mon Oct 28 11:57:18 PDT 2019
+base.0=C\:\\Users\\still\\Documents\\androidProjects\\Sprint-Android-Best-Practices-Assignments\\M01\\guided\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
