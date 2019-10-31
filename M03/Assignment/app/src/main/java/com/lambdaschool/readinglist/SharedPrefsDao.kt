@@ -10,8 +10,8 @@ object SharedPrefsDao {
     private val allBookIds: String?
         get() = MainActivity.preferences!!.getString(ID_LIST_KEY, "")
 
-    val nextId: String?
-        get() = MainActivity.preferences!!.getString(NEXT_ID_KEY, "0")
+    val nextId: String
+        get() = MainActivity.preferences!!.getString(NEXT_ID_KEY, "0") as String
 
     fun getBookCsv(id: String): String? {
         return MainActivity.preferences!!.getString(BOOK_ITEM_KEY_PREFIX + id, "")
