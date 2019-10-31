@@ -5,7 +5,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
+
+
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -35,8 +36,6 @@ class MainActivity : AppCompatActivity() {
         book_scroll_view.addView(BooksController.getBooksView(context!!))
 
     }
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == Constants.NEW_BOOK_REQUEST_CODE && resultCode == RESULT_OK) {
             if (data != null) {
@@ -48,7 +47,11 @@ class MainActivity : AppCompatActivity() {
                 BooksController.handleEditActivityResult(data)
             }
         }
+        super.onActivityResult(requestCode, resultCode, data)
     }
+
+
+
 
     companion object {
          var preferences: SharedPreferences? = null

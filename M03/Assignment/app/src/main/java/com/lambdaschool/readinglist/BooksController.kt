@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 
+
 object BooksController {
 
     private fun buildItemView(book: Book, context: Context): TextView {
