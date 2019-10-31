@@ -15,10 +15,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
+
 @Module
 class NetModule {
     val logtag ="NEtModule"
 
+    @Singleton
     @Provides
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         Log.d(logtag, "prodving retrofit")
@@ -28,6 +31,7 @@ class NetModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
+    @Singleton
     @Provides
     fun providesohHttpClient(): OkHttpClient {
         Log.d(logtag, "prodving okhttp")
@@ -44,7 +48,7 @@ class NetModule {
         return ohHttpClient
     }
 
-
+    @Singleton
     @Provides
     fun providesGson(): Gson {
         return   GsonBuilder()
@@ -63,6 +67,7 @@ class NetModule {
     }
 }
 @Component(modules = [NetModule::class])
+@Singleton
 interface ApplicationComponent {
     fun inject(mewApplication: ApplicationClass)
     fun inject(MainFragment: MainFragment)

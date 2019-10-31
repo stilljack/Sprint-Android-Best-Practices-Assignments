@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c17e17a-bc7f-47aa-a6ca-fc8f83ed799f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../M04/assignment/app/src/main/java/com/example/asssignmint/retrofit/ApplicationComponent.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../M04/assignment/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../M04/assignment/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../M04/assignment/app/src/main/java/com/example/asssignmint/retrofit/Retrofit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../M04/assignment/app/src/main/java/com/example/asssignmint/retrofit/Retrofit.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../M04/assignment/app/src/main/java/com/example/asssignmint/ui/main/MainFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../M04/assignment/app/src/main/java/com/example/asssignmint/ui/main/MainFragment.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

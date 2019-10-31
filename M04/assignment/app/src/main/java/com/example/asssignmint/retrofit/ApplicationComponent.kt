@@ -4,10 +4,29 @@ import android.app.Application
 
 open class ApplicationClass : Application() {
 
+    companion object {
+        lateinit var instance: ApplicationClass
+            private set
+    }
 
-    public lateinit var applicationComponent: ApplicationComponent
+    lateinit var appComponent: ApplicationComponent
+        private set
+
 
     override fun onCreate() {
+        super.onCreate()
+        instance = this
+        initComponent()
+    }
+
+    private fun initComponent() {
+        appComponent = DaggerApplicationComponent.builder()
+            .build()
+        appComponent.inject(this)
+    }
+    public lateinit var applicationComponent: ApplicationComponent
+
+  /*  override fun onCreate() {
         super.onCreate()
 
         // ApplicationComponent is our component interface.
@@ -18,5 +37,5 @@ open class ApplicationClass : Application() {
             .build()
 
         applicationComponent.inject(this)
-    }
+    }*/
 }
