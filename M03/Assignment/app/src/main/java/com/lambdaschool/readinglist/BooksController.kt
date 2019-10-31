@@ -6,7 +6,7 @@ import android.content.Intent
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.lambdaschool.readinglist.js.R
+
 
 object BooksController {
 
