@@ -17,7 +17,7 @@ class DaggerDemoApplication:Application() {
         super.onCreate()
 
         component.inject(this)
-        co
+
 
     }
 }

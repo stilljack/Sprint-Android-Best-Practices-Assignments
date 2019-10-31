@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         val example = DataExample
 
         textview.text = "${example.getDate()}"
-        var dateComponent=        DaggerDataComponent.create().inject(this)
 
     }
 }
