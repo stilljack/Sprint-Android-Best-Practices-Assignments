@@ -1,30 +1,34 @@
 package com.example.asssignmint.retrofit
 
 import android.app.Application
+import dagger.android.DaggerApplication_MembersInjector
+
 
 open class ApplicationClass : Application() {
 
     companion object {
         lateinit var instance: ApplicationClass
             private set
-    }
 
     lateinit var appComponent: ApplicationComponent
         private set
 
-
+    }
     override fun onCreate() {
         super.onCreate()
         instance = this
-        initComponent()
+       appComponent= initComponent(this)
+
     }
 
-    private fun initComponent() {
-        appComponent = DaggerApplicationComponent.builder()
+    private fun initComponent(app:Application) :ApplicationComponent {
+/*        appComponent = .builder()
+            .build()*/
+     val final=  DaggerApplicationComponent.builder()
+            .netModule(NetModule(app))
             .build()
-        appComponent.inject(this)
+      return final
     }
-    public lateinit var applicationComponent: ApplicationComponent
 
   /*  override fun onCreate() {
         super.onCreate()

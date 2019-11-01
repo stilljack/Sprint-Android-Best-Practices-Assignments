@@ -11,16 +11,14 @@ import com.example.asssignmint.R
 import com.example.asssignmint.retrofit.AdviceAPI
 import com.example.asssignmint.retrofit.AdviceMsg
 import com.example.asssignmint.retrofit.ApplicationClass
+import com.example.asssignmint.retrofit.ApplicationClass.Companion.appComponent
 import retrofit2.Call
 import javax.inject.Inject
 
-class MainFragment (var applicationComponent: Application): Fragment(),AdviceAPI {
+class MainFragment (): Fragment(),AdviceAPI {
     @Inject
-        lateinit var mNetworkApi: AdviceAPI
+    lateinit var mNetworkApi: AdviceAPI
 
-        init {
-
-        }
 
 
 
@@ -43,7 +41,9 @@ class MainFragment (var applicationComponent: Application): Fragment(),AdviceAPI
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
-        (applicationComponent as ApplicationClass).applicationComponent.inject(this)
+
+
+    (activity!!.application as ApplicationClass). .inject(this)
         mNetworkApi.randomAdvice()
     }
 

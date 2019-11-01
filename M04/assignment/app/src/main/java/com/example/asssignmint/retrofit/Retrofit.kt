@@ -1,5 +1,6 @@
 package com.example.asssignmint.retrofit
 
+import android.app.Application
 import android.util.Log
 import com.example.asssignmint.ui.main.MainFragment
 import com.google.gson.Gson
@@ -18,20 +19,21 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-class NetModule {
+class NetModule (app:Application) {
     val logtag ="NEtModule"
 
-    @Singleton
+    val BASE_URL = "https://api.adviceslip.com/"
+
     @Provides
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         Log.d(logtag, "prodving retrofit")
         return Retrofit.Builder()
-            .baseUrl(AdviceRetriever.BASE_URL)
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
-    @Singleton
+
     @Provides
     fun providesohHttpClient(): OkHttpClient {
         Log.d(logtag, "prodving okhttp")
@@ -48,7 +50,7 @@ class NetModule {
         return ohHttpClient
     }
 
-    @Singleton
+
     @Provides
     fun providesGson(): Gson {
         return   GsonBuilder()
@@ -62,12 +64,31 @@ class NetModule {
     // Dagger2 will get Retrofit object from provideRetrofit function declared above.
 
     @Provides
-    fun provideNetworkApi(retrofit: Retrofit): AdviceAPI {
+    fun provideNetworkApi(): AdviceAPI {
+        val logger = HttpLoggingInterceptor()
+        logger.level = HttpLoggingInterceptor.Level.BASIC
+        Log.d(logtag, "logger.level=${logger.level}")
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
+        val ohHttpClient = OkHttpClient.Builder()
+            .addInterceptor(logger)
+            .retryOnConnectionFailure(false)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .build()
+        Log.d(logtag, "prodving retrofit")
+       val retrofit=  Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(ohHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+
+
         return retrofit.create(AdviceAPI::class.java)
     }
 }
 @Component(modules = [NetModule::class])
-@Singleton
 interface ApplicationComponent {
     fun inject(mewApplication: ApplicationClass)
     fun inject(MainFragment: MainFragment)
@@ -78,11 +99,6 @@ interface AdviceAPI {
     fun randomAdvice(): Call<AdviceMsg>
 }
 
-class AdviceRetriever {
-    companion object {
-        private const val TAG = "RETRIEVER"
-        internal const val BASE_URL = "https://api.adviceslip.com/"
-    }
 
 
 
@@ -99,4 +115,3 @@ class AdviceRetriever {
 
        // return adviceAPI.randomAdvice()
     }*/
-}
