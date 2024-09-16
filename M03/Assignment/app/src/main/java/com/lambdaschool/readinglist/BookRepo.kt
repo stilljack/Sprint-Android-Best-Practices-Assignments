@@ -4,7 +4,7 @@ object BookRepo {
 
     val bookArray: Array<Book?>
         get() {
-            val books = arrayOfNulls<Book>(Integer.parseInt(SharedPrefsDao.nextId!!))
+            val books = arrayOfNulls<Book>(Integer.parseInt(SharedPrefsDao.nextId))
             for (i in books.indices) {
                 val bookCsv = SharedPrefsDao.getBookCsv(i.toString())
                 books[i] = bookCsv?.let { Book(it) }
@@ -13,7 +13,7 @@ object BookRepo {
         }
 
     fun getBook(id: Int): Book {
-        return Book(SharedPrefsDao.getBookCsv(Integer.toString(id))!!)
+        return Book(SharedPrefsDao.getBookCsv(id.toString())!!)
     }
 
     fun nextId(): Int {
